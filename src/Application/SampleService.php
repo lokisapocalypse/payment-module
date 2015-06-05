@@ -1,6 +1,6 @@
 <?php
 
-namespace Fusani\Fusani\Application;
+namespace Fusani\Payment\Application;
 
 class SampleService
 {

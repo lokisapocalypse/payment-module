@@ -1,6 +1,6 @@
 <?php
 
-namespace Fusani\Fusani;
+namespace Fusani\Payment;
 
 use PHPUnit_Framework_TestCase;
 

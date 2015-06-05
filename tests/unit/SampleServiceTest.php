@@ -1,12 +1,12 @@
 <?php
 
-namespace Fusani\Fusani;
+namespace Fusani\Payment;
 
-use Fusani\Fusani\Application\SampleService;
-use Fusani\Fusani\SimpleTestCase;
+use Fusani\Payment\Application\SampleService;
+use Fusani\Payment\SimpleTestCase;
 
 /**
- * @covers Fusani\Fusani\Application\SampleService
+ * @covers Fusani\Payment\Application\SampleService
  */
 class SampleServiceTest extends SimpleTestCase
 {
