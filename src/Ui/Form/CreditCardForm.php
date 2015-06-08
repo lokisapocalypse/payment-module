@@ -16,6 +16,7 @@ class CreditCardForm extends Form
         foreach ($countryService->displayCountriesWithIsoCodes() as $country) {
             $countries[$country['isoCode']] = $country['name'];
         }
+        $countries = ['' => ''] + $countries;
         asort($countries);
 
         $this->setAttribute('class', 'form-horizontal');
@@ -134,7 +135,7 @@ class CreditCardForm extends Form
             'name' => 'cardNumber',
         ]);
 
-        $months = array_combine(range(1, 12), range(1, 12));
+        $months = ['' => ''] + array_combine(range(1, 12), range(1, 12));
         $this->add([
             'attributes' => [
                 'class' => 'form-control',
@@ -149,7 +150,7 @@ class CreditCardForm extends Form
         ]);
 
         $thisYear = date('Y');
-        $years = array_combine(range($thisYear, $thisYear + 25), range($thisYear, $thisYear + 25));
+        $years = ['' => ''] + array_combine(range($thisYear, $thisYear + 25), range($thisYear, $thisYear + 25));
         $this->add([
             'attributes' => [
                 'class' => 'form-control',

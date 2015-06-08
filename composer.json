@@ -1,7 +1,8 @@
 {
-    "name": "fusani/payment-module",
     "description": "Fusani payment module",
+    "name": "fusani/payment-module",
     "require": {
+        "braintree/braintree_php": "~3.0",
         "fusani/places": "~0.0",
         "php": ">=5.4.0",
         "zendframework/zendframework": "~2.2"
