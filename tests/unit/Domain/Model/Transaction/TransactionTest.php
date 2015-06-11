@@ -5,6 +5,7 @@ namespace Fusani\Payment\TestSuite;
 use Fusani\Payment\Domain\Model\Customer;
 use Fusani\Payment\Domain\Model\Transaction;
 use Fusani\Payment\SimpleTestCase;
+use PHPUnit_Framework_Assert;
 
 /**
  * @covers Fusani\Payment\Domain\Model\Transaction\Transaction
@@ -31,5 +32,11 @@ class TransactionTest extends SimpleTestCase
         ];
 
         $this->assertEquals($expected, $this->transaction->provideBraintreeInterest());
+    }
+
+    public function testSetBraintreeId()
+    {
+        $this->transaction->setBraintreeId('braaaaaaaaains');
+        $this->assertEquals('braaaaaaaaains', PHPUnit_Framework_Assert::readAttribute($this->transaction, 'braintreeId'));
     }
 }

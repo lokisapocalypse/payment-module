@@ -7,6 +7,7 @@ use Fusani\Payment\Domain\Model\Customer;
 class Transaction
 {
     protected $amount;
+    protected $braintreeId;
     protected $creditCard;
     protected $customer;
 
@@ -24,5 +25,10 @@ class Transaction
             'creditCard' => $this->creditCard->provideBraintreeInterest(),
             'customer' => $this->customer->provideBraintreeInterest(),
         ];
+    }
+
+    public function setBraintreeId($braintreeId)
+    {
+        $this->braintreeId = $braintreeId;
     }
 }
