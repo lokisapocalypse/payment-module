@@ -25,7 +25,7 @@ class CreditCardForm extends Form
         $this->add([
             'attributes' => [
                 'class' => 'form-control',
-                'maxlength' => '100',
+                'maxlength' => '255',
                 'placeholder' => 'First Name',
                 'required' => 'required',
             ],
@@ -35,7 +35,7 @@ class CreditCardForm extends Form
         $this->add([
             'attributes' => [
                 'class' => 'form-control',
-                'maxlength' => '100',
+                'maxlength' => '255',
                 'placeholder' => 'Last Name',
                 'required' => 'required',
             ],
@@ -118,7 +118,7 @@ class CreditCardForm extends Form
         $this->add([
             'attributes' => [
                 'class' => 'form-control',
-                'maxlength' => '255',
+                'maxlength' => '175',
                 'placeholder' => 'Name on card',
                 'required' => 'required',
             ],
@@ -190,7 +190,7 @@ class CreditCardForm extends Form
             'filters' => [$this->filterStringTrim],
             'name' => 'firstname',
             'required' => true,
-            'validators' => [$this->validateStringLength(100), $this->validateNotEmpty],
+            'validators' => [$this->validateStringLength(255), $this->validateNotEmpty],
         ]);
 
         // lastname
@@ -198,7 +198,7 @@ class CreditCardForm extends Form
             'filters' => [$this->filterStringTrim],
             'name' => 'lastname',
             'required' => true,
-            'validators' => [$this->validateStringLength(100), $this->validateNotEmpty],
+            'validators' => [$this->validateStringLength(255), $this->validateNotEmpty],
         ]);
 
         // email address
@@ -266,7 +266,7 @@ class CreditCardForm extends Form
             'filters' => [$this->filterStringTrim],
             'name' => 'nameOnCard',
             'required' => true,
-            'validators' => [$this->validateStringLength(255), $this->validateNotEmpty],
+            'validators' => [$this->validateStringLength(175), $this->validateNotEmpty],
         ]);
 
         // card number

@@ -1,6 +1,6 @@
 <?php
 
-namespace Fusani\Payment;
+namespace Fusani\Payment\TestSuite;
 
 use Fusani\Payment\Ui\Form;
 use Fusani\Payment\SimpleTestCase;
@@ -38,7 +38,7 @@ class CreditCardFormTest extends SimpleTestCase
 
     public function testFirstnameFailsWhenTooLong()
     {
-        $this->form->setData(array_merge($this->validData(), ['firstname' => str_repeat('x', 101)]));
+        $this->form->setData(array_merge($this->validData(), ['firstname' => str_repeat('x', 256)]));
         $this->assertFalse($this->form->isValid());
     }
 
@@ -50,7 +50,7 @@ class CreditCardFormTest extends SimpleTestCase
 
     public function testLastnameFailsWhenTooLong()
     {
-        $this->form->setData(array_merge($this->validData(), ['lastname' => str_repeat('x', 101)]));
+        $this->form->setData(array_merge($this->validData(), ['lastname' => str_repeat('x', 256)]));
         $this->assertFalse($this->form->isValid());
     }
 

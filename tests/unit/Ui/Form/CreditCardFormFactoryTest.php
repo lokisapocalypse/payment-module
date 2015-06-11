@@ -1,6 +1,6 @@
 <?php
 
-namespace Fusani\Payment;
+namespace Fusani\Payment\TestSuite;
 
 use Fusani\Payment\Ui\Form;
 use Fusani\Payment\SimpleTestCase;
