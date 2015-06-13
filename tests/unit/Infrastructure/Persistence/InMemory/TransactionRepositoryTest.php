@@ -32,4 +32,17 @@ class TransactionRepositoryTest extends SimpleTestCase
 
         $this->assertEquals(1, $this->repository->count());
     }
+
+    public function testAll()
+    {
+        $this->assertEquals([], $this->repository->all());
+
+        $transaction = $this->getMockBuilder('Fusani\Payment\Domain\Model\Transaction\Transaction')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $this->repository->add($transaction);
+
+        $this->assertEquals([$transaction], $this->repository->all());
+    }
 }

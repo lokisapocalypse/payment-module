@@ -14,7 +14,7 @@ class PaymentService
         $this->transactionRepository = $transactionRepository;
     }
 
-    public function makePayment($amount, array $customer, array $creditCard)
+    public function makePayment($amount, array $customer, array $creditCard, array $custom = [])
     {
         $customer = new Customer\Customer(
             $customer['email'],
@@ -31,6 +31,11 @@ class PaymentService
         );
 
         $transaction = new Transaction\Transaction($amount, $customer, $creditCard);
+
+        if ($custom) {
+            $transaction->addCustomData($custom);
+        }
+
         $result = $this->transactionRepository->add($transaction);
 
         return [

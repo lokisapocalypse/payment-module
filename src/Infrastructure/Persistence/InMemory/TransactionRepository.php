@@ -23,6 +23,11 @@ class TransactionRepository implements Transaction\TransactionRepository
         return $object;
     }
 
+    public function all()
+    {
+        return $this->transactions;
+    }
+
     public function count()
     {
         return count($this->transactions);

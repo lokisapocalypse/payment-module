@@ -49,4 +49,38 @@ class PaymentServiceTest extends SimpleTestCase
         $this->assertEquals($expected, $result);
         $this->assertEquals(1, $this->transactionRepository->count());
     }
+
+    public function testMakePaymentWithCustomFields()
+    {
+        $customer = [
+            'email' => 'peter.parker@dailybugle.com',
+            'firstname' => 'Peter',
+            'lastname' => 'Parker',
+        ];
+        $creditCard = [
+            'nameOnCard' => 'Peter Parker',
+            'cardNumber' => 5,
+            'expirationMonth' => 12,
+            'expirationYear' => 2001,
+            'securityCode' => 123,
+        ];
+        $custom = [
+            'favoriteColor' => 'red',
+        ];
+
+        $result = $this->service->makePayment(100.00, $customer, $creditCard, $custom);
+        $expected = [
+            'errors' => [],
+            'success' => true,
+        ];
+
+        $this->assertEquals($expected, $result);
+        $this->assertEquals(1, $this->transactionRepository->count());
+
+        $transaction = $this->transactionRepository->all();
+        $transaction = $transaction[0];
+        $interest = $transaction->provideBraintreeInterest();
+
+        $this->assertEquals($custom, $interest['customFields']);
+    }
 }

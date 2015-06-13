@@ -23,12 +23,22 @@ class TransactionTest extends SimpleTestCase
         $this->transaction = new Transaction\Transaction(100.00, $this->customer, $this->creditCard);
     }
 
+    public function testAddCustomData()
+    {
+        $custom = ['wife' => 'Mary Jane Watson'];
+        $this->transaction->addCustomData($custom);
+        $interest = $this->transaction->provideBraintreeInterest();
+
+        $this->assertEquals($custom, $interest['customFields']);
+    }
+
     public function testProvideBraintreeInterest()
     {
         $expected = [
             'amount' => 100.00,
             'creditCard' => $this->creditCard->provideBraintreeInterest(),
             'customer' => $this->customer->provideBraintreeInterest(),
+            'customFields' => null,
         ];
 
         $this->assertEquals($expected, $this->transaction->provideBraintreeInterest());
