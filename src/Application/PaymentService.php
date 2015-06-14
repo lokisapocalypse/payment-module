@@ -19,7 +19,14 @@ class PaymentService
         $customer = new Customer\Customer(
             $customer['email'],
             $customer['firstname'],
-            $customer['lastname']
+            $customer['lastname'],
+            new Customer\Address(
+                $customer['address']['streetOne'],
+                $customer['address']['city'],
+                $customer['address']['stateProvince'],
+                $customer['address']['postalCode'],
+                $customer['address']['country']
+            )
         );
 
         $creditCard = new Transaction\CreditCard(

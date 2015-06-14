@@ -31,6 +31,13 @@ class PaymentServiceTest extends SimpleTestCase
             'email' => 'peter.parker@dailybugle.com',
             'firstname' => 'Peter',
             'lastname' => 'Parker',
+            'address' => [
+                'streetOne' => '123 Main Street',
+                'city' => 'New York',
+                'stateProvince' => 'NY',
+                'postalCode' => '81241',
+                'country' => 'US',
+            ],
         ];
         $creditCard = [
             'nameOnCard' => 'Peter Parker',
@@ -56,6 +63,13 @@ class PaymentServiceTest extends SimpleTestCase
             'email' => 'peter.parker@dailybugle.com',
             'firstname' => 'Peter',
             'lastname' => 'Parker',
+            'address' => [
+                'streetOne' => '123 Main Street',
+                'city' => 'New York',
+                'stateProvince' => 'NY',
+                'postalCode' => '81241',
+                'country' => 'US',
+            ],
         ];
         $creditCard = [
             'nameOnCard' => 'Peter Parker',

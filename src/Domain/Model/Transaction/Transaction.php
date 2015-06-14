@@ -26,11 +26,16 @@ class Transaction
 
     public function provideBraintreeInterest()
     {
+        $customer = $this->customer->provideBraintreeInterest();
+        $billingAddress = $customer['address'];
+        unset($customer['address']);
+
         return [
             'amount' => $this->amount,
+            'billing' => $billingAddress,
             'customFields' => $this->custom,
             'creditCard' => $this->creditCard->provideBraintreeInterest(),
-            'customer' => $this->customer->provideBraintreeInterest(),
+            'customer' => $customer,
         ];
     }
 
