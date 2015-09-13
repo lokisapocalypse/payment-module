@@ -29,7 +29,7 @@ class CreditCardForm extends Form
                 'placeholder' => 'First Name',
                 'required' => 'required',
             ],
-            'name' => 'firstname',
+            'name' => 'billingFirstName',
         ]);
 
         $this->add([
@@ -39,7 +39,7 @@ class CreditCardForm extends Form
                 'placeholder' => 'Last Name',
                 'required' => 'required',
             ],
-            'name' => 'lastname',
+            'name' => 'billingLastName',
         ]);
 
         $this->add([
@@ -50,7 +50,7 @@ class CreditCardForm extends Form
                 'required' => 'required',
                 'type' => 'email',
             ],
-            'name' => 'email',
+            'name' => 'billingEmail',
         ]);
 
         $this->add([
@@ -60,7 +60,7 @@ class CreditCardForm extends Form
                 'placeholder' => 'Street',
                 'required' => 'required',
             ],
-            'name' => 'streetOne',
+            'name' => 'billingStreetOne',
         ]);
 
         $this->add([
@@ -69,7 +69,7 @@ class CreditCardForm extends Form
                 'maxlength' => '255',
                 'placeholder' => 'Street',
             ],
-            'name' => 'streetTwo',
+            'name' => 'billingStreetTwo',
         ]);
 
         $this->add([
@@ -79,7 +79,7 @@ class CreditCardForm extends Form
                 'placeholder' => 'City',
                 'required' => 'required',
             ],
-            'name' => 'city',
+            'name' => 'billingCity',
         ]);
 
         $this->add([
@@ -89,7 +89,7 @@ class CreditCardForm extends Form
                 'placeholder' => 'State / Province',
                 'required' => 'required',
             ],
-            'name' => 'stateProvince',
+            'name' => 'billingStateProvince',
         ]);
 
         $this->add([
@@ -99,7 +99,7 @@ class CreditCardForm extends Form
                 'placeholder' => 'Postal code',
                 'required' => 'required',
             ],
-            'name' => 'postalCode',
+            'name' => 'billingPostalCode',
         ]);
 
         $this->add([
@@ -108,7 +108,7 @@ class CreditCardForm extends Form
                 'placeholder' => 'Country',
                 'required' => 'required',
             ],
-            'name' => 'country',
+            'name' => 'billingCountry',
             'options' => [
                 'value_options' => $countries,
             ],
@@ -122,7 +122,7 @@ class CreditCardForm extends Form
                 'placeholder' => 'Name on card',
                 'required' => 'required',
             ],
-            'name' => 'nameOnCard',
+            'name' => 'billingNameOnCard',
         ]);
 
         $this->add([
@@ -132,7 +132,7 @@ class CreditCardForm extends Form
                 'placeholder' => 'Card number',
                 'required' => 'required',
             ],
-            'name' => 'cardNumber',
+            'name' => 'billingCardNumber',
         ]);
 
         $months = ['' => ''] + array_combine(range(1, 12), range(1, 12));
@@ -142,7 +142,7 @@ class CreditCardForm extends Form
                 'placeholder' => 'Expiration month',
                 'required' => 'required',
             ],
-            'name' => 'expirationMonth',
+            'name' => 'billingExpirationMonth',
             'options' => [
                 'value_options' => $months,
             ],
@@ -157,7 +157,7 @@ class CreditCardForm extends Form
                 'placeholder' => 'Expiration year',
                 'required' => 'required',
             ],
-            'name' => 'expirationYear',
+            'name' => 'billingExpirationYear',
             'options' => [
                 'value_options' => $years,
             ],
@@ -167,11 +167,21 @@ class CreditCardForm extends Form
         $this->add([
             'attributes' => [
                 'class' => 'form-control',
+                'placeholder' => 'MM / YY',
+                'required' => 'required',
+                'type' => 'tel',
+            ],
+            'name' => 'billingExpiration',
+        ]);
+
+        $this->add([
+            'attributes' => [
+                'class' => 'form-control',
                 'maxlength' => '10',
                 'placeholder' => 'Security code',
                 'required' => 'required',
             ],
-            'name' => 'securityCode',
+            'name' => 'billingSecurityCode',
         ]);
 
         $this->add([
@@ -180,7 +190,7 @@ class CreditCardForm extends Form
                 'data-loading-text' => 'Submitting...',
                 'value' => 'Submit',
             ],
-            'name' => 'submit',
+            'name' => 'billingSubmit',
             'type' => 'Zend\Form\Element\Submit',
         ]);
 
@@ -188,7 +198,7 @@ class CreditCardForm extends Form
         // firstname
         $this->fusaniInputFilter->add([
             'filters' => [$this->filterStringTrim],
-            'name' => 'firstname',
+            'name' => 'billingFirstName',
             'required' => true,
             'validators' => [$this->validateStringLength(255), $this->validateNotEmpty],
         ]);
@@ -196,7 +206,7 @@ class CreditCardForm extends Form
         // lastname
         $this->fusaniInputFilter->add([
             'filters' => [$this->filterStringTrim],
-            'name' => 'lastname',
+            'name' => 'billingLastName',
             'required' => true,
             'validators' => [$this->validateStringLength(255), $this->validateNotEmpty],
         ]);
@@ -204,7 +214,7 @@ class CreditCardForm extends Form
         // email address
         $this->fusaniInputFilter->add([
             'filters' => [$this->filterStringTrim],
-            'name' => 'email',
+            'name' => 'billingEmail',
             'required' => true,
             'validators' => [
                 $this->validateStringLength(255),
@@ -216,7 +226,7 @@ class CreditCardForm extends Form
         // street
         $this->fusaniInputFilter->add([
             'filters' => [$this->filterStringTrim],
-            'name' => 'streetOne',
+            'name' => 'billingStreetOne',
             'required' => true,
             'validators' => [$this->validateStringLength(255), $this->validateNotEmpty],
         ]);
@@ -224,7 +234,7 @@ class CreditCardForm extends Form
         // street
         $this->fusaniInputFilter->add([
             'filters' => [$this->filterStringTrim],
-            'name' => 'streetTwo',
+            'name' => 'billingStreetTwo',
             'required' => false,
             'validators' => [$this->validateStringLength(255)],
         ]);
@@ -232,7 +242,7 @@ class CreditCardForm extends Form
         // city
         $this->fusaniInputFilter->add([
             'filters' => [$this->filterStringTrim],
-            'name' => 'city',
+            'name' => 'billingCity',
             'required' => true,
             'validators' => [$this->validateStringLength(255), $this->validateNotEmpty],
         ]);
@@ -240,7 +250,7 @@ class CreditCardForm extends Form
         // state
         $this->fusaniInputFilter->add([
             'filters' => [$this->filterStringTrim],
-            'name' => 'stateProvince',
+            'name' => 'billingStateProvince',
             'required' => true,
             'validators' => [$this->validateStringLength(255), $this->validateNotEmpty],
         ]);
@@ -248,7 +258,7 @@ class CreditCardForm extends Form
         // zip
         $this->fusaniInputFilter->add([
             'filters' => [$this->filterStringTrim],
-            'name' => 'postalCode',
+            'name' => 'billingPostalCode',
             'required' => true,
             'validators' => [$this->validateStringLength(20), $this->validateNotEmpty],
         ]);
@@ -256,7 +266,7 @@ class CreditCardForm extends Form
         // country
         $this->fusaniInputFilter->add([
             'filters' => [$this->filterStringTrim],
-            'name' => 'country',
+            'name' => 'billingCountry',
             'required' => true,
             'validators' => [$this->validateNotEmpty, $this->validateInArray(array_keys($countries))],
         ]);
@@ -264,7 +274,7 @@ class CreditCardForm extends Form
         // name on card
         $this->fusaniInputFilter->add([
             'filters' => [$this->filterStringTrim],
-            'name' => 'nameOnCard',
+            'name' => 'billingNameOnCard',
             'required' => true,
             'validators' => [$this->validateStringLength(175), $this->validateNotEmpty],
         ]);
@@ -272,7 +282,7 @@ class CreditCardForm extends Form
         // card number
         $this->fusaniInputFilter->add([
             'filters' => [$this->filterStringTrim],
-            'name' => 'cardNumber',
+            'name' => 'billingCardNumber',
             'required' => true,
             'validators' => [$this->validateStringLength(20), $this->validateNotEmpty],
         ]);
@@ -280,7 +290,7 @@ class CreditCardForm extends Form
         // expiration month
         $this->fusaniInputFilter->add([
             'filters' => [$this->filterStringTrim],
-            'name' => 'expirationMonth',
+            'name' => 'billingExpirationMonth',
             'required' => true,
             'validators' => [$this->validateNotEmpty, $this->validateInArray(array_keys($months))],
         ]);
@@ -288,15 +298,22 @@ class CreditCardForm extends Form
         // expiration year
         $this->fusaniInputFilter->add([
             'filters' => [$this->filterStringTrim],
-            'name' => 'expirationYear',
+            'name' => 'billingExpirationYear',
             'required' => true,
             'validators' => [$this->validateNotEmpty, $this->validateInArray(array_keys($years))],
+        ]);
+
+        $this->fusaniInputFilter->add([
+            'filters' => [$this->filterStringTrim],
+            'name' => 'billingExpiration',
+            'required' => false,
+            'validators' => [],
         ]);
 
         // security code
         $this->fusaniInputFilter->add([
             'filters' => [$this->filterStringTrim],
-            'name' => 'securityCode',
+            'name' => 'billingSecurityCode',
             'required' => true,
             'validators' => [$this->validateStringLength(10), $this->validateNotEmpty],
         ]);
