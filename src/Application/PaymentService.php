@@ -47,6 +47,7 @@ class PaymentService
 
         return [
             'errors' => $result->success ? [] : $result->errors->deepAll(),
+            'id' => $result->success ? $result->transaction->id : null,
             'success' => $result->success,
         ];
     }

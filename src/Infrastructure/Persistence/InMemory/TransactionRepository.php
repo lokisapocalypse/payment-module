@@ -19,6 +19,8 @@ class TransactionRepository implements Transaction\TransactionRepository
 
         $object = new \stdClass();
         $object->success = true;
+        $object->transaction = new \stdClass();
+        $object->transaction->id = rand();
 
         return $object;
     }

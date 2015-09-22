@@ -50,6 +50,7 @@ class PaymentServiceTest extends SimpleTestCase
         $result = $this->service->makePayment(100.00, $customer, $creditCard);
         $expected = [
             'errors' => [],
+            'id' => $result['id'],
             'success' => true,
         ];
 
@@ -85,6 +86,7 @@ class PaymentServiceTest extends SimpleTestCase
         $result = $this->service->makePayment(100.00, $customer, $creditCard, $custom);
         $expected = [
             'errors' => [],
+            'id' => $result['id'],
             'success' => true,
         ];
 
