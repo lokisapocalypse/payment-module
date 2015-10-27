@@ -2,8 +2,8 @@
 
 namespace Fusani\Payment\Infrastructure\Persistence\Braintree;
 
-use Braintree_Configuration;
-use Braintree_Transaction;
+use Braintree\Configuration as BraintreeConfiguration;
+use Braintree\Transaction as BraintreeTransaction;
 use Fusani\Payment\Domain\Model\Transaction;
 
 /**
@@ -13,15 +13,15 @@ class TransactionRepository implements Transaction\TransactionRepository
 {
     public function __construct($environment, $merchantId, $publicKey, $privateKey)
     {
-        Braintree_Configuration::environment($environment);
-        Braintree_Configuration::merchantId($merchantId);
-        Braintree_Configuration::publicKey($publicKey);
-        Braintree_Configuration::privateKey($privateKey);
+        BraintreeConfiguration::environment($environment);
+        BraintreeConfiguration::merchantId($merchantId);
+        BraintreeConfiguration::publicKey($publicKey);
+        BraintreeConfiguration::privateKey($privateKey);
     }
 
     public function add(Transaction\Transaction $transaction)
     {
-        $result = Braintree_Transaction::sale($transaction->provideBraintreeInterest());
+        $result = BraintreeTransaction::sale($transaction->provideBraintreeInterest());
 
         if ($result->success) {
             $transaction->setBraintreeId($result->transaction->id);
